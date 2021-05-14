@@ -1,0 +1,11 @@
+.Button {
+  padding: 12px;
+  background: skyblue;
+  color: snow;
+  border: none;
+  border-radius: 5px;
+}
+
+.Button.cative {
+  background: #13485e;
+}

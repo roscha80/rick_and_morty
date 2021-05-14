@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import { saveToLocal, loadFromLocal } from './lib/localStorage'
+import './App.css'
 
-function App() {
+export default function App() {
+  const [users, setUsers] = useState(loadFromLocal('users') ?? {})
+  const [url, setUrl] = useState('https://rickandmortyapi.com/api/character')
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(resBody => setUsers({ ...users, [resBody.page]: resBody.data }))
+  }, [url])
+
+  useEffect(() => {
+    saveToLocal('users', users)
+  }, [users])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul>
+        {Object.values(users)
+          .flat()
+          .map(user => (
+            <li key={user.id}>{user}</li>
+          ))}
+      </ul>
     </div>
-  );
+  )
 }
-
-export default App;
