@@ -1,29 +1,48 @@
-import React, { useState, useEffect } from 'react'
-import { saveToLocal, loadFromLocal } from './lib/localStorage'
 import './App.css'
+import Card from './Card'
+import Header from './Header'
+import React, { useEffect, useState } from 'react'
 
-export default function App() {
-  const [users, setUsers] = useState(loadFromLocal('users') ?? {})
-  const [url, setUrl] = useState('https://rickandmortyapi.com/api/character')
+function App() {
+  const [characters, setCharacters] = useState([])
+  const [url, setURL] = useState('https://rickandmortyapi.com/api/character')
 
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
-      .then(resBody => setUsers({ ...users, [resBody.page]: resBody.data }))
+      .then(res => {
+        setCharacters(res.results)
+      })
+      .catch(error => console.error(error))
   }, [url])
 
-  useEffect(() => {
-    saveToLocal('users', users)
-  }, [users])
   return (
-    <div className="App">
-      <ul>
-        {Object.values(users)
-          .flat()
-          .map(user => (
-            <li key={user.id}>{user}</li>
-          ))}
-      </ul>
-    </div>
+    <>
+      <section className="App App__Background">
+        <Header />
+        {characters.map(character => {
+          const { id, image, name, species, origin } = character
+          return (
+            <Card
+              key={id}
+              image={image}
+              name={name}
+              species={species}
+              origin={origin}
+            />
+          )
+        })}
+        <div className="Pagination">
+          <button className="Pagination__Button" onClick={() => setURL()}>
+            &lt; Previous
+          </button>
+          <button className="Pagination__Button" onClick={() => setURL()}>
+            Next &gt;
+          </button>
+        </div>
+      </section>
+    </>
   )
 }
+
+export default App

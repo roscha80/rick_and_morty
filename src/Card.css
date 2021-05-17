@@ -1,25 +1,37 @@
 .Card {
-  padding: 20px;
-  background: #eee;
-  font-family: sans-serif;
   position: relative;
+  text-align: center;
+  color: black;
+  padding: 10px;
+  width: 200px;
+  height: auto;
+  background: linear-gradient(45deg, #b8c4c7 0%, #494f50 100%);
 }
 
-.Card__title {
-  font-weight: 300;
-  color: steelblue;
-}
-
-.Card__bookmark {
-  position: absolute;
-  top: -10px;
-  right: 10px;
-  width: 30px;
-  height: 60px;
-  background: #bbb;
+.Card__Button {
+  background: #494f50;
+  color: white;
+  padding: 3px;
+  width: 100px;
+  margin: 0 10px 15px 0;
   border: none;
 }
 
-.Card__bookmark--active {
-  background: yellow;
+.Card:hover {
+  background: linear-gradient(45deg, #494f50 0%, #b8c4c7 100%);
+}
+
+.Card__Image {
+  width: 100%;
+}
+
+.Card__Bookmark {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  width: 30px;
+}
+
+.Card__Bio {
+  margin-top: 0;
 }

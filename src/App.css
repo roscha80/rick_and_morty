@@ -1,8 +1,36 @@
 .App {
-  text-align: center;
-}
-.App {
-  padding: 20px;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
+  padding: 40px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+}
+
+.App__Background {
+  background-image: url('./assets/images/rm_app_bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.Pagination {
+  display: block;
+}
+
+.Pagination__Button {
+  background: #494f50;
+  color: white;
+  padding: 3px;
+  width: 100px;
+  margin: 0 10px 15px 0;
+  border: none;
+}
+
+.Pagination__Button:hover {
+  background: linear-gradient(45deg, #494f50 0%, #b8c4c7 100%);
 }

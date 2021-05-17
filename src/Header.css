@@ -1,0 +1,15 @@
+.Header {
+  display: block;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.Header__Heading {
+  margin: 10px auto;
+  color: #22a2bd;
+}
+
+.Header__Image {
+  width: 100%;
+}
