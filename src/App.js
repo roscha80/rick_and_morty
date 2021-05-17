@@ -41,6 +41,10 @@ function App() {
           </button>
         </div>
       </section>
+      <p>
+        Built with{' '}
+        <a href="https://rickandmortyapi.com/">Rick and Morty API </a>{' '}
+      </p>
     </>
   )
 }
